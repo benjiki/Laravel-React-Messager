@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
             $users = User::inRandomOrder()->limit(rand(2, 5))->pluck('id');
             $group->users()->attach(array_unique([1, ...$users]));
         }
-
+        User::factory(40)->create();
         Message::factory(1000)->create();
         $messages = Message::whereNull('group_id')->orderBy('created_at')->get();
 
